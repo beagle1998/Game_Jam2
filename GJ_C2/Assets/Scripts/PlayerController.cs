@@ -4,58 +4,79 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Adjustable Player Variables
+    public float playerSpeed;
+    public float jumpPower;
+    public float extraJumps;
 
-    public float speed;
+    // Movement Variables
+    private float moveInput;
+    private bool facingRight;
+    private float jumpCharges;
+
+    // Component or Object Variables
     private Rigidbody2D rb;
-    private Vector2 moveVelocity;
-    bool jump = false, Grounded;
-    int j_counter = 0;
-    
+    private bool isGrounded;
 
-    void Start()
+    public Transform groundCheck;
+    public float checkRadius;
+    public LayerMask whatIsGround;
+
+    // Artifical Gravity (TEST, only uncomment if using KINEMATIC mode for rigidBody2D)
+    //public float gravity = 10f;
+
+    //TO-DO:
+    //pressing left moves player left
+    //pressing right moves player right
+    //pressing space moves player up
+
+    private void Start()
     {
+        jumpCharges = extraJumps;
         rb = GetComponent<Rigidbody2D>();
-        
+
     }
-    
-    // Update is called once per frame
-    void Update()
+
+
+    private void FixedUpdate()                              //updates conditions, player sprite, and player velocity
     {
-        Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"),0);
-        moveVelocity = moveInput.normalized * speed;
-        if (Input.GetButtonDown("Jump"))
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+
+        moveInput = Input.GetAxis("Horizontal");
+        Debug.Log(moveInput);
+        rb.velocity = new Vector2(moveInput * playerSpeed, rb.velocity.y);
+
+        if (facingRight == true && moveInput < 0)           //if the character is facing RIGHT -but- the player wants to move LEFT
         {
-            jump = true;
+            Flip();                                         //flip character sprite
+        }
+        else if (facingRight == false && moveInput > 0)     //otherwise if the character is facing LEFT -but- wants to move RIGHT
+        {
+            Flip();                                         //flip character sprite
         }
     }
 
-    void IsGrounded() { 
-        Grounded = true;
-    }
-    void NotGrounded()
+    private void Update()
     {
-        Grounded = false;
-    }
 
-    Vector2 JumpMove(Vector2 v)
-    {
-        Vector2 InputJump = new Vector2(0,10f);
-        InputJump= InputJump+v;
-        return InputJump;
-    }
-
-
-
-    private void FixedUpdate()
-    {
-        if (jump)
+        if (isGrounded == true)                             //when the player is on the ground,
         {
-           moveVelocity=JumpMove(moveVelocity);
-           jump = false;
+            jumpCharges = extraJumps;                       //refresh the player's ability to jump
         }
-        rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCharges > 0)     // if the player pressed jump AND has more than 1 total jump
+        {
+            rb.velocity = Vector2.up * jumpPower;           //make player jump
+            jumpCharges--;
+        }
+
     }
 
-
+    void Flip()
+    {
+        facingRight = !facingRight;
+        Vector3 playerScale = transform.localScale;
+        playerScale.x *= -1;
+        transform.localScale = playerScale;
+    }
 }
