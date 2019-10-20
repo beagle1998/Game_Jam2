@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     {
         jumpCharges = extraJumps;
         rb = GetComponent<Rigidbody2D>();
+        rb.freezeRotation = true;
 
     }
 
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()                              //updates conditions, player sprite, and player velocity
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+
 
         moveInput = Input.GetAxis("Horizontal");
         Debug.Log(moveInput);
@@ -64,7 +66,7 @@ public class PlayerController : MonoBehaviour
             jumpCharges = extraJumps;                       //refresh the player's ability to jump
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCharges > 0)     // if the player pressed jump AND has more than 1 total jump
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCharges >= 0)     // if the player pressed jump AND has more than 1 total jump
         {
             rb.velocity = Vector2.up * jumpPower;           //make player jump
             jumpCharges--;
