@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 053ff80450d499242a7e5fe149d8385d
+  - enabled: 1
+    path: Assets/Scenes/HAOYUAN_ZHANG.unity
+    guid: 6db7f1c9927e3f24ba024b85afdf7ed6
+  - enabled: 0
     path: Assets/Scenes/Randolph.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
