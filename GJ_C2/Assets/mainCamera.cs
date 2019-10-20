@@ -6,7 +6,7 @@ public class mainCamera : MonoBehaviour
 {
 
     public Transform target;
-    public float minx; 
+    public float minx=0f, maxx=-5f, c_speed=1f;
 
     // Start is called before the first frame update
     void Start()
@@ -19,8 +19,15 @@ public class mainCamera : MonoBehaviour
     void Update()
     {
         Vector3 wantedPosition = target.TransformPoint(0, 0, -10f);
-        wantedPosition.x = (wantedPosition.x < minx) ? minx : wantedPosition.x;
-        transform.position = Vector3.Lerp(transform.position,wantedPosition, Time.deltaTime * 1f);
+        // wantedPosition.x = (wantedPosition.x < minx) ? minx : wantedPosition.x;
+
+        if ( wantedPosition.x < minx && wantedPosition.x > maxx )
+        {
+            wantedPosition.x = minx;
+        }   
+
+       
+        transform.position = Vector3.Lerp(transform.position,wantedPosition, Time.deltaTime * c_speed);
 
     }
 }
