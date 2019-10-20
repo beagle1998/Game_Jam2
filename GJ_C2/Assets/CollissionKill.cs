@@ -8,6 +8,7 @@ public class CollissionKill : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Transform respawnPoint;
     [SerializeField] private GameObject deathPoint;
+    [SerializeField] private GameObject New_Scene;
     // Start is called before the first frame update
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -21,6 +22,18 @@ public class CollissionKill : MonoBehaviour
             
 
         }
+
+        if (collision.gameObject.name == New_Scene.name)
+        {
+           
+           SceneManager.LoadScene(2);
+
+            
+
+
+        }
+
+
     }
 
 
