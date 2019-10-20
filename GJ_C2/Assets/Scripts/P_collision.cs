@@ -13,6 +13,7 @@ public class P_collision : MonoBehaviour
     public GameObject Crumble_tilemapGameObject; // remember to set this gameobject to the tilemap you want the player to destroy
     public GameObject Hazard_tilemapGameObject; // see above
 
+    public Tile Crumble_phase1; // assign to crumbly_brick1 (tile)
     public Tile Crumble_phase2; // assign to crumbly_brick2 (tile)
     public Tile Crumble_phase3; // assign to crumbly_brick3 (tile)
 
@@ -33,6 +34,10 @@ public class P_collision : MonoBehaviour
         if (collision.gameObject.name == Hazard_tilemapGameObject.name) // you may have to change the name of this depending on what the name of your spike tilemap is
         {
             player.transform.position = respawnPoint.transform.position; // "respawns" player
+        }
+        if (collision.gameObject.tag == "DropTile")
+        {
+            collision.gameObject.AddComponent<Rigidbody2D>();
         }
     }
 
@@ -68,6 +73,8 @@ public class P_collision : MonoBehaviour
                     tilemap.SetTile(tilemap.WorldToCell(hitPosition), Crumble_phase3);
                     yield return new WaitForSeconds(sec_per_crumble);
                     tilemap.SetTile(tilemap.WorldToCell(hitPosition), null); // destroys tile
+                    yield return new WaitForSeconds(10);
+                    tilemap.SetTile(tilemap.WorldToCell(hitPosition), Crumble_phase1);
                 }
             }
         } 
