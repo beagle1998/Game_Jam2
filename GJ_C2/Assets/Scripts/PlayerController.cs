@@ -41,10 +41,9 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()                              //updates conditions, player sprite, and player velocity
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
-
+       
         moveInput = Input.GetAxis("Horizontal");
-        Debug.Log(moveInput);
+        Debug.Log(jumpCharges);
         rb.velocity = new Vector2(moveInput * playerSpeed, rb.velocity.y);
 
         if (facingRight == true && moveInput < 0)           //if the character is facing RIGHT -but- the player wants to move LEFT
@@ -59,6 +58,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
         if (isGrounded == true)                             //when the player is on the ground,
         {
