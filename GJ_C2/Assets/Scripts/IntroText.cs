@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Menu : MonoBehaviour
+public class IntroText : MonoBehaviour
 {
+    private GameObject obj;
     // Start is called before the first frame update
     void Start()
     {
-        
+        obj = GameObject.Find("Tutorial");
     }
 
     // Update is called once per frame
@@ -15,8 +16,8 @@ public class Menu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("you pressed space");
-
+            Debug.Log("spacepress");
+            Destroy(obj);
         }
     }
 }
