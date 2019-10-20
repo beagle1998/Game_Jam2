@@ -24,7 +24,7 @@ public class Ladder_Crossed : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //      Debug.Log(collision.gameObject.GetComponent<Coin>());
-        if (collision.gameObject.GetComponent<Ladder>())
+        if (collision.gameObject.tag=="Ladder")
         {
             l_amount += 1;
             Destroy(collision.gameObject);
