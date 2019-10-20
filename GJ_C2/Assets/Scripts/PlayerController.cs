@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     public float checkRadius;
     public LayerMask whatIsGround;
 
+    private bool isDead=false;
+
     // Artifical Gravity (TEST, only uncomment if using KINEMATIC mode for rigidBody2D)
     //public float gravity = 10f;
 
@@ -41,18 +43,20 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()                              //updates conditions, player sprite, and player velocity
     {
-       
-        moveInput = Input.GetAxis("Horizontal");
-    //    Debug.Log(jumpCharges);
-        rb.velocity = new Vector2(moveInput * playerSpeed, rb.velocity.y);
+        if (!isDead)
+        {
+            moveInput = Input.GetAxis("Horizontal");
+            //    Debug.Log(jumpCharges);
+            rb.velocity = new Vector2(moveInput * playerSpeed, rb.velocity.y);
 
-        if (facingRight == true && moveInput < 0)           //if the character is facing RIGHT -but- the player wants to move LEFT
-        {
-            Flip();                                         //flip character sprite
-        }
-        else if (facingRight == false && moveInput > 0)     //otherwise if the character is facing LEFT -but- wants to move RIGHT
-        {
-            Flip();                                         //flip character sprite
+            if (facingRight == true && moveInput < 0)           //if the character is facing RIGHT -but- the player wants to move LEFT
+            {
+                Flip();                                         //flip character sprite
+            }
+            else if (facingRight == false && moveInput > 0)     //otherwise if the character is facing LEFT -but- wants to move RIGHT
+            {
+                Flip();                                         //flip character sprite
+            }
         }
     }
 
@@ -87,4 +91,12 @@ public class PlayerController : MonoBehaviour
         playerScale.x *= -1;
         transform.localScale = playerScale;
     }
+
+    void MakeDead()
+    {
+        isDead = true;
+
+    }
+
+
 }
