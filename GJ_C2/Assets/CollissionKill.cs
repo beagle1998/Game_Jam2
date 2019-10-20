@@ -9,10 +9,10 @@ public class CollissionKill : MonoBehaviour
     // Start is called before the first frame update
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "DeathTile")
-        {
-           Destroy(collision.gameObject);
-        }
+     //   if (collision.gameObject.name == "DeathTile")
+     //   {
+     //      Destroy(collision.gameObject);
+     //   }
         if (collision.gameObject.name == "DeathTile")
         {
             player.transform.position = respawnPoint.transform.position;
@@ -23,7 +23,6 @@ public class CollissionKill : MonoBehaviour
 
     void Start()
     {
-        
     }
 
     // Update is called once per frame

@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         jumpCharges = 1+extraJumps;
-        Debug.Log(jumpCharges);
+// Debug.Log(jumpCharges);
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
     }
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
     {
        
         moveInput = Input.GetAxis("Horizontal");
-        Debug.Log(jumpCharges);
+    //    Debug.Log(jumpCharges);
         rb.velocity = new Vector2(moveInput * playerSpeed, rb.velocity.y);
 
         if (facingRight == true && moveInput < 0)           //if the character is facing RIGHT -but- the player wants to move LEFT
