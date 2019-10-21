@@ -27,6 +27,10 @@ public class PlayerController : MonoBehaviour
     // Artifical Gravity (TEST, only uncomment if using KINEMATIC mode for rigidBody2D)
     //public float gravity = 10f;
 
+    //Audio Initialization
+    public AudioClip jump;
+    private AudioSource source;
+
     //TO-DO:
     //pressing left moves player left
     //pressing right moves player right
@@ -38,6 +42,7 @@ public class PlayerController : MonoBehaviour
     Debug.Log(jumpCharges);
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
+        source = GetComponent<AudioSource>();               
     }
 
 
@@ -66,6 +71,7 @@ public class PlayerController : MonoBehaviour
 
         if (isGrounded == true)                             //when the player is on the ground,
         {
+            //Debug.Log(isGrounded);
             if (extraJumps > 0) //refresh the player's ability to jump
             {
                 jumpCharges = extraJumps;
@@ -80,6 +86,8 @@ public class PlayerController : MonoBehaviour
         {
             jumpCharges--;
             rb.velocity = Vector2.up * jumpPower;           //make player jump
+            source.PlayOneShot(jump);
+            source.Play();
         }
 
     }

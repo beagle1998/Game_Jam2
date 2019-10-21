@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 // attach this script to player ... hazards will respawn the player and crumble blocks will crumble on touch
 // also assign the public objects to the GameObjects in unity!
@@ -18,6 +19,8 @@ public class P_collision : MonoBehaviour
     public Tile Crumble_phase3; // assign to crumbly_brick3 (tile)
 
     Tilemap tilemap;
+
+    [SerializeField] private GameObject horse;
 
     private float sec_per_crumble = .3f; // second per crumbling transition
 
@@ -38,6 +41,10 @@ public class P_collision : MonoBehaviour
         if (collision.gameObject.tag == "DropTile")
         {
             collision.gameObject.AddComponent<Rigidbody2D>();
+        }
+        if (collision.gameObject.name == horse.name)
+        {
+            SceneManager.LoadScene(1);
         }
     }
 

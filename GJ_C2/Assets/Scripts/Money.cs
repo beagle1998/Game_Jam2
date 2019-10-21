@@ -8,6 +8,10 @@ public class Money : MonoBehaviour
     private int c_amount;
     [SerializeField] 
     private Text coinCounter;
+
+    // Sound Implementation
+    public AudioSource source;
+    public AudioClip coinSound;
     void Start()
     {
         c_amount = 0;
@@ -28,6 +32,7 @@ public class Money : MonoBehaviour
         {
             c_amount += 1;
             Destroy(collision.gameObject);
+            source.PlayOneShot(coinSound);
 
         }
   

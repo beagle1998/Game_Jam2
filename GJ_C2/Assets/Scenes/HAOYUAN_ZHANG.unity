@@ -4163,6 +4163,7 @@ GameObject:
   - component: {fileID: 2100400734}
   - component: {fileID: 2100400733}
   - component: {fileID: 2100400732}
+  - component: {fileID: 2100400731}
   - component: {fileID: 2100400730}
   - component: {fileID: 2100400731}
   - component: {fileID: 2100400735}
@@ -4193,6 +4194,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  jump: {fileID: 8300000, guid: 335a497e24f331f42a9615f7e67cea45, type: 3}
 --- !u!70 &2100400731
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -4421,7 +4423,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
