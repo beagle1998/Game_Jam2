@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         jumpCharges = 1+extraJumps;
-// Debug.Log(jumpCharges);
+    Debug.Log(jumpCharges);
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
     }
