@@ -28,7 +28,10 @@ public class Timer_Time : MonoBehaviour
             timer_counter.gameObject.SetActive(true);
             
         }
-       
+        if (player.transform.position.x >= location)
+       {
+            timer_counter.gameObject.SetActive(false);
+       }
 
     }
 }
