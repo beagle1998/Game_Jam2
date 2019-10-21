@@ -18676,7 +18676,7 @@ MonoBehaviour:
   jumpPower: 10
   extraJumps: 0
   groundCheck: {fileID: 1300535792}
-  checkRadius: 0.1
+  checkRadius: 0.01
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
