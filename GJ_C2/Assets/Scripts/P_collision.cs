@@ -44,7 +44,7 @@ public class P_collision : MonoBehaviour
         }
         if (collision.gameObject.name == horse.name)
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(3);
         }
     }
 

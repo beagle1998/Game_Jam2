@@ -394,7 +394,7 @@ GameObject:
   - component: {fileID: 149044556}
   m_Layer: 0
   m_Name: Ladder
-  m_TagString: Untagged
+  m_TagString: Ladder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1325,7 +1325,7 @@ GameObject:
   - component: {fileID: 329074826}
   m_Layer: 0
   m_Name: Ladder
-  m_TagString: Untagged
+  m_TagString: Ladder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16422,7 +16422,7 @@ GameObject:
   - component: {fileID: 1036613575}
   m_Layer: 0
   m_Name: Ladder
-  m_TagString: Untagged
+  m_TagString: Ladder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16918,7 +16918,7 @@ GameObject:
   - component: {fileID: 1130810373}
   m_Layer: 0
   m_Name: Ladder
-  m_TagString: Untagged
+  m_TagString: Ladder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17713,7 +17713,7 @@ GameObject:
   - component: {fileID: 1286738982}
   m_Layer: 0
   m_Name: Ladder
-  m_TagString: Untagged
+  m_TagString: Ladder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18618,8 +18618,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -185.51, y: 155.95001}
-  m_SizeDelta: {x: 233.57, y: 51.5}
+  m_AnchoredPosition: {x: 323, y: 219}
+  m_SizeDelta: {x: 455.8, y: 70.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1486664114
 MonoBehaviour:
@@ -18634,14 +18634,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 0.61723715, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 24
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 2
@@ -20230,7 +20230,7 @@ GameObject:
   - component: {fileID: 2045074555}
   m_Layer: 0
   m_Name: Ladder
-  m_TagString: Untagged
+  m_TagString: Ladder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20485,6 +20485,7 @@ GameObject:
   - component: {fileID: 2100400738}
   - component: {fileID: 2100400739}
   - component: {fileID: 2100400740}
+  - component: {fileID: 2100400741}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -20512,6 +20513,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  jump: {fileID: 8300000, guid: 335a497e24f331f42a9615f7e67cea45, type: 3}
 --- !u!70 &2100400731
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -20652,6 +20654,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinCounter: {fileID: 455034414}
+  source: {fileID: 2100400739}
+  coinSound: {fileID: 8300000, guid: 6e8221b085d0a164a9d66b60e5a2986b, type: 3}
 --- !u!114 &2100400738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20671,6 +20675,7 @@ MonoBehaviour:
   Crumble_phase1: {fileID: 11400000, guid: 1b05b3d4a060c2d4499bdafc7c38b815, type: 2}
   Crumble_phase2: {fileID: 11400000, guid: 0608ae42128b12442b4834e079a78752, type: 2}
   Crumble_phase3: {fileID: 11400000, guid: 701a9bffffc22904e8be44ba86ff3ada, type: 2}
+  horse: {fileID: 963804414}
 --- !u!82 &2100400739
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20782,6 +20787,21 @@ MonoBehaviour:
   player: {fileID: 2100400734}
   location: -35
   timer_counter: {fileID: 1486664114}
+--- !u!114 &2100400741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100400729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed230d2b41725e4b908ed786b37b227, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2100400734}
+  respawnPoint: {fileID: 379825244}
+  LowerBound: -250
 --- !u!1 &2103735489
 GameObject:
   m_ObjectHideFlags: 0

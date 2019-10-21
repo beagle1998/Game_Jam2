@@ -22,7 +22,7 @@ public class Timer_Time : MonoBehaviour
     //    timer_counter.gameObject.SetActive(true);
         time = time + Time.deltaTime;
        // Debug.Log(time);
-        timer_counter.text = "Time Wasted: " + time.ToString();
+        timer_counter.text = "Time Wasted: " + (Mathf.RoundToInt(time)).ToString();
         if (player.transform.position.x <= location)
         {
             timer_counter.gameObject.SetActive(true);

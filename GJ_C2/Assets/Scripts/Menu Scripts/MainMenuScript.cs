@@ -14,12 +14,12 @@ public class MainMenuScript : MonoBehaviour
 
     public void QuitGame()
     {
-        if (SceneManager.GetActiveScene().buildIndex != 1)
+        if (SceneManager.GetActiveScene().buildIndex != 0)
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(0);
         }
 
-        else if (SceneManager.GetActiveScene().buildIndex == 1)
+        else if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             //Application.Quit();
             QuitGame();
@@ -29,7 +29,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void PlayCredits()   // CREDITS SCREEN is INDEX 2
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(3);
     }
 
     public void SoundPlay()
